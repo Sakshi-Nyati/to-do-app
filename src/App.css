@@ -1,0 +1,170 @@
+#root {
+  min-height: 100vh;
+}
+
+.app-container {
+  width: min(680px, calc(100% - 32px));
+  margin: 64px auto;
+}
+
+.page-header {
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: #5967c7;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 36px;
+}
+
+.subtitle {
+  margin: 10px 0 0;
+  color: #697086;
+}
+
+.task-card {
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e5e8f0;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(32, 37, 54, 0.06);
+}
+
+.add-task-form {
+  display: flex;
+  gap: 10px;
+}
+
+.add-task-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid #d9deea;
+  border-radius: 8px;
+  outline: none;
+}
+
+.add-task-form input:focus {
+  border-color: #5967c7;
+  box-shadow: 0 0 0 3px rgba(89, 103, 199, 0.12);
+}
+
+.add-task-form button {
+  padding: 12px 18px;
+  color: white;
+  background: #5967c7;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.task-summary {
+  display: flex;
+  justify-content: space-between;
+  margin: 22px 0 16px;
+  color: #697086;
+  font-size: 13px;
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #edf0f5;
+}
+
+.filter {
+  padding: 8px 12px;
+  color: #697086;
+  background: transparent;
+  border: 0;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.filter.active {
+  color: #4654b2;
+  background: #eef0ff;
+  font-weight: 700;
+}
+
+.task-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 2px;
+  border-bottom: 1px solid #edf0f5;
+}
+
+.task-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.task-label input {
+  width: 16px;
+  height: 16px;
+  accent-color: #5967c7;
+}
+
+.completed {
+  color: #9298a8;
+  text-decoration: line-through;
+}
+
+.delete-button {
+  padding: 6px 9px;
+  color: #b34c56;
+  background: #fff3f3;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.empty-state {
+  padding: 28px 4px;
+  color: #9298a8;
+  text-align: center;
+}
+
+.page-footer {
+  margin-top: 18px;
+  color: #9298a8;
+  font-size: 12px;
+  text-align: center;
+}
+
+@media (max-width: 520px) {
+  .app-container {
+    margin: 32px auto;
+  }
+
+  .task-card {
+    padding: 16px;
+  }
+
+  .add-task-form {
+    flex-direction: column;
+  }
+
+  .add-task-form button {
+    width: 100%;
+  }
+}
