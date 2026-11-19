@@ -129,13 +129,66 @@ h1 {
   text-decoration: line-through;
 }
 
-.delete-button {
+.task-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.delete-button,
+.edit-button,
+.save-button,
+.cancel-button {
   padding: 6px 9px;
-  color: #b34c56;
-  background: #fff3f3;
   border: 0;
   border-radius: 6px;
   cursor: pointer;
+}
+
+.delete-button {
+  color: #b34c56;
+  background: #fff3f3;
+}
+
+.edit-button {
+  color: #4654b2;
+  background: #eef0ff;
+}
+
+.save-button {
+  color: white;
+  background: #5967c7;
+}
+
+.save-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cancel-button {
+  color: #697086;
+  background: #f1f3f8;
+}
+
+.edit-task-form {
+  display: flex;
+  flex: 1;
+  gap: 6px;
+  min-width: 0;
+}
+
+.edit-task-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid #d9deea;
+  border-radius: 6px;
+  outline: none;
+}
+
+.edit-task-form input:focus {
+  border-color: #5967c7;
+  box-shadow: 0 0 0 3px rgba(89, 103, 199, 0.12);
 }
 
 .empty-state {
