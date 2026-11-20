@@ -10,6 +10,7 @@ function App() {
   });
   const [taskTitle, setTaskTitle] = useState("");
   const [filter, setFilter] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
   const [editingId, setEditingId] = useState(null);
   const [editingTitle, setEditingTitle] = useState("");
 
@@ -74,13 +75,32 @@ function App() {
     cancelEditing();
   }
 
+  const completedCount = tasks.filter((task) => task.completed).length;
+  const filterCounts = {
+    all: tasks.length,
+    pending: tasks.length - completedCount,
+    completed: completedCount
+  };
+
+  const normalizedSearch = searchTerm.trim().toLowerCase();
   const visibleTasks = tasks.filter((task) => {
-    if (filter === "pending") return !task.completed;
-    if (filter === "completed") return task.completed;
-    return true;
+    if (filter === "pending" && task.completed) return false;
+    if (filter === "completed" && !task.completed) return false;
+    return task.title.toLowerCase().includes(normalizedSearch);
   });
 
-  const completedCount = tasks.filter((task) => task.completed).length;
+  const isFiltering = filter !== "all" || normalizedSearch !== "";
+  let emptyMessage = "No tasks yet. Add your first task above.";
+  if (tasks.length > 0 && isFiltering) {
+    emptyMessage = normalizedSearch
+      ? "No tasks match your search."
+      : `No ${filter} tasks.`;
+  }
+
+  function clearFilters() {
+    setFilter("all");
+    setSearchTerm("");
+  }
 
   return (
     <main className="app-container">
@@ -113,16 +133,37 @@ function App() {
               key={filterName}
               type="button"
               className={filter === filterName ? "filter active" : "filter"}
+              aria-pressed={filter === filterName}
               onClick={() => setFilter(filterName)}
             >
               {filterName.charAt(0).toUpperCase() + filterName.slice(1)}
+              <span className="filter-count">{filterCounts[filterName]}</span>
             </button>
           ))}
+          <input
+            type="search"
+            className="search-input"
+            value={searchTerm}
+            onChange={(event) => setSearchTerm(event.target.value)}
+            placeholder="Search tasks"
+            aria-label="Search tasks"
+          />
         </nav>
 
         <ul className="task-list">
           {visibleTasks.length === 0 ? (
-            <li className="empty-state">No tasks to display.</li>
+            <li className="empty-state">
+              {emptyMessage}
+              {tasks.length > 0 && isFiltering && (
+                <button
+                  type="button"
+                  className="clear-filters"
+                  onClick={clearFilters}
+                >
+                  Clear filters
+                </button>
+              )}
+            </li>
           ) : (
             visibleTasks.map((task) =>
               editingId === task.id ? (

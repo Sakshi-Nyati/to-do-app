@@ -95,6 +95,47 @@ h1 {
   font-weight: 700;
 }
 
+.filter-count {
+  margin-left: 6px;
+  padding: 1px 7px;
+  color: #697086;
+  background: #f1f3f8;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.filter.active .filter-count {
+  color: #4654b2;
+  background: #ffffff;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 0;
+  margin-left: auto;
+  padding: 8px 10px;
+  border: 1px solid #d9deea;
+  border-radius: 7px;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #5967c7;
+  box-shadow: 0 0 0 3px rgba(89, 103, 199, 0.12);
+}
+
+.clear-filters {
+  display: block;
+  margin: 10px auto 0;
+  padding: 6px 12px;
+  color: #4654b2;
+  background: #eef0ff;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
 .task-list {
   margin: 0;
   padding: 0;
@@ -211,6 +252,15 @@ h1 {
 
   .task-card {
     padding: 16px;
+  }
+
+  .filters {
+    flex-wrap: wrap;
+  }
+
+  .search-input {
+    flex-basis: 100%;
+    margin-left: 0;
   }
 
   .add-task-form {
