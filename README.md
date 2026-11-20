@@ -8,7 +8,8 @@ A small React application that provides basic task management.
 - View all tasks
 - Mark a task as completed or pending
 - Delete a task
-- Filter tasks by All, Pending, and Completed
+- Filter tasks by All, Pending, and Completed (with task counts)
+- Search tasks by title (combines with the status filter)
 - Save tasks in browser LocalStorage
 
 ## Requirements
